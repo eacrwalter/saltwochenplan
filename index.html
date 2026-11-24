@@ -290,6 +290,7 @@ body.pr{padding-bottom:0}
   <label><span class="k">Mein Kürzel</span><input id="kz" class="kz" maxlength="6" autocomplete="off" aria-describedby="kzmsg"></label>
   <span class="kzmsg" id="kzmsg" role="status"></span>
   <span class="kzmsg" id="lastby"></span>
+  <button class="btn" id="blogout" type="button" style="font-size:12px;padding:6px 14px;margin-left:12px">Abmelden</button>
 </div>
 
 </div>
@@ -1124,6 +1125,14 @@ async function sha(t){
     }catch(e){m.textContent="Anmeldung hier nicht möglich."}
   });
 })();
+document.getElementById("blogout").addEventListener("click",function(){
+  try{localStorage.removeItem(GK)}catch(e){}
+  meta.kz="";saveMeta();showMeta();
+  var g=document.getElementById("gate"); if(g) g.style.display="";
+  document.body.style.overflow="hidden";
+  document.getElementById("gu").value="";document.getElementById("gc").value="";
+  document.getElementById("gmsg").textContent="";
+});
 renderTable();renderChips();showMeta();showUndo();showPre();
 initSync();
 </script>
